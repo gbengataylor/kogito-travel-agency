@@ -1,0 +1,169 @@
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_BBraYC9OEDikS6zgKlNtCQ" exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_hotelItem" structureRef="org.acme.travel.Hotel"/>
+  <bpmn2:itemDefinition id="_tripItem" structureRef="org.acme.travel.Trip"/>
+  <bpmn2:itemDefinition id="_3664F61B-4872-43BE-8DC9-D26B401219A8_InMessageType" structureRef=""/>
+  <bpmn2:itemDefinition id="_3664F61B-4872-43BE-8DC9-D26B401219A8_OutMessageType" structureRef=""/>
+  <bpmn2:itemDefinition id="__3664F61B-4872-43BE-8DC9-D26B401219A8_ParameterInputXItem" structureRef="org.acme.travel.Trip"/>
+  <bpmn2:itemDefinition id="__3664F61B-4872-43BE-8DC9-D26B401219A8_ResultOutputXItem" structureRef="org.acme.travel.Hotel"/>
+  <bpmn2:message id="_3664F61B-4872-43BE-8DC9-D26B401219A8_InMessage" itemRef="_3664F61B-4872-43BE-8DC9-D26B401219A8_InMessageType"/>
+  <bpmn2:message id="_3664F61B-4872-43BE-8DC9-D26B401219A8_OutMessage" itemRef="_3664F61B-4872-43BE-8DC9-D26B401219A8_OutMessageType"/>
+  <bpmn2:interface id="_3664F61B-4872-43BE-8DC9-D26B401219A8_ServiceInterface" name="org.acme.travel.service.HotelBookingService" implementationRef="org.acme.travel.service.HotelBookingService">
+    <bpmn2:operation id="_3664F61B-4872-43BE-8DC9-D26B401219A8_ServiceOperation" name="getHotel" implementationRef="getHotel">
+      <bpmn2:inMessageRef>_3664F61B-4872-43BE-8DC9-D26B401219A8_InMessage</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_3664F61B-4872-43BE-8DC9-D26B401219A8_OutMessage</bpmn2:outMessageRef>
+    </bpmn2:operation>
+  </bpmn2:interface>
+  <bpmn2:process id="hotelBooking" drools:packageName="org.acme.travel" drools:version="1.0" drools:adHoc="false" name="Hotel Booking" isExecutable="true" processType="Public">
+    <bpmn2:extensionElements>
+      <drools:global identifier="hotel" type="org.acme.travel.Hotel"/>
+      <drools:global identifier="trip" type="org.acme.travel.Trip"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="hotel" itemSubjectRef="_hotelItem" name="hotel"/>
+    <bpmn2:property id="trip" itemSubjectRef="_tripItem" name="trip"/>
+    <bpmn2:sequenceFlow id="_518F0CFF-903C-4922-AA97-FE4D719C2087" sourceRef="_3664F61B-4872-43BE-8DC9-D26B401219A8" targetRef="_679921C6-CE4C-4566-B1F2-24147D96E6D8">
+      <bpmn2:extensionElements>
+        <drools:metaData name="isAutoConnection.source">
+          <drools:metaValue>true</drools:metaValue>
+        </drools:metaData>
+        <drools:metaData name="isAutoConnection.target">
+          <drools:metaValue>true</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_5B7A08B2-FF4B-4A07-B523-E1C9DAE6AD6E" sourceRef="_9C619D73-6466-4D4B-9EFD-92ABF77FB03E" targetRef="_3664F61B-4872-43BE-8DC9-D26B401219A8">
+      <bpmn2:extensionElements>
+        <drools:metaData name="isAutoConnection.source">
+          <drools:metaValue>true</drools:metaValue>
+        </drools:metaData>
+        <drools:metaData name="isAutoConnection.target">
+          <drools:metaValue>true</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:textAnnotation id="_E1B57BF5-A41D-45C2-98EA-446363369634" name="End">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>End</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:text>End</bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:textAnnotation id="_43E5F67A-31F2-4BB1-975C-46F2ECBADF25" name="Start">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Start</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:text>Start</bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:endEvent id="_679921C6-CE4C-4566-B1F2-24147D96E6D8">
+      <bpmn2:incoming>_518F0CFF-903C-4922-AA97-FE4D719C2087</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:serviceTask id="_3664F61B-4872-43BE-8DC9-D26B401219A8" drools:serviceimplementation="Java" drools:serviceinterface="org.acme.travel.service.HotelBookingService" drools:serviceoperation="getHotel" name="Book Hotel" implementation="Java" operationRef="_3664F61B-4872-43BE-8DC9-D26B401219A8_ServiceOperation">
+      <bpmn2:documentation id="_BCAxkC9OEDikS6zgKlNtCQ">Hotel booking</bpmn2:documentation>
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Book Hotel</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_5B7A08B2-FF4B-4A07-B523-E1C9DAE6AD6E</bpmn2:incoming>
+      <bpmn2:outgoing>_518F0CFF-903C-4922-AA97-FE4D719C2087</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_BCG4MC9OEDikS6zgKlNtCQ">
+        <bpmn2:dataInput id="_3664F61B-4872-43BE-8DC9-D26B401219A8_ParameterInputX" drools:dtype="org.acme.travel.Trip" itemSubjectRef="__3664F61B-4872-43BE-8DC9-D26B401219A8_ParameterInputXItem" name="Parameter"/>
+        <bpmn2:dataOutput id="_3664F61B-4872-43BE-8DC9-D26B401219A8_ResultOutputX" drools:dtype="org.acme.travel.Hotel" itemSubjectRef="__3664F61B-4872-43BE-8DC9-D26B401219A8_ResultOutputXItem" name="Result"/>
+        <bpmn2:inputSet id="_BCHfQC9OEDikS6zgKlNtCQ">
+          <bpmn2:dataInputRefs>_3664F61B-4872-43BE-8DC9-D26B401219A8_ParameterInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="_BCIGUC9OEDikS6zgKlNtCQ">
+          <bpmn2:dataOutputRefs>_3664F61B-4872-43BE-8DC9-D26B401219A8_ResultOutputX</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_BCIGUS9OEDikS6zgKlNtCQ">
+        <bpmn2:sourceRef>trip</bpmn2:sourceRef>
+        <bpmn2:targetRef>_3664F61B-4872-43BE-8DC9-D26B401219A8_ParameterInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="_BCIGUi9OEDikS6zgKlNtCQ">
+        <bpmn2:sourceRef>_3664F61B-4872-43BE-8DC9-D26B401219A8_ResultOutputX</bpmn2:sourceRef>
+        <bpmn2:targetRef>hotel</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:serviceTask>
+    <bpmn2:startEvent id="_9C619D73-6466-4D4B-9EFD-92ABF77FB03E">
+      <bpmn2:outgoing>_5B7A08B2-FF4B-4A07-B523-E1C9DAE6AD6E</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:association id="_4FABC431-0913-49BF-8DE4-C411BE966D1D" sourceRef="_9C619D73-6466-4D4B-9EFD-92ABF77FB03E" targetRef="_43E5F67A-31F2-4BB1-975C-46F2ECBADF25"/>
+    <bpmn2:association id="_545E99B9-AAF8-4DE6-9830-43A80B34AA8D" sourceRef="_679921C6-CE4C-4566-B1F2-24147D96E6D8" targetRef="_E1B57BF5-A41D-45C2-98EA-446363369634"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="hotelBooking">
+      <bpmndi:BPMNShape id="shape__9C619D73-6466-4D4B-9EFD-92ABF77FB03E" bpmnElement="_9C619D73-6466-4D4B-9EFD-92ABF77FB03E">
+        <dc:Bounds height="56" width="56" x="246" y="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__3664F61B-4872-43BE-8DC9-D26B401219A8" bpmnElement="_3664F61B-4872-43BE-8DC9-D26B401219A8">
+        <dc:Bounds height="102" width="154" x="363" y="107"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__679921C6-CE4C-4566-B1F2-24147D96E6D8" bpmnElement="_679921C6-CE4C-4566-B1F2-24147D96E6D8">
+        <dc:Bounds height="56" width="56" x="593" y="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__43E5F67A-31F2-4BB1-975C-46F2ECBADF25" bpmnElement="_43E5F67A-31F2-4BB1-975C-46F2ECBADF25">
+        <dc:Bounds height="60" width="100" x="219" y="179"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__E1B57BF5-A41D-45C2-98EA-446363369634" bpmnElement="_E1B57BF5-A41D-45C2-98EA-446363369634">
+        <dc:Bounds height="60" width="100" x="578" y="186"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__9C619D73-6466-4D4B-9EFD-92ABF77FB03E_to_shape__3664F61B-4872-43BE-8DC9-D26B401219A8" bpmnElement="_5B7A08B2-FF4B-4A07-B523-E1C9DAE6AD6E">
+        <di:waypoint x="302" y="158"/>
+        <di:waypoint x="363" y="158"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__9C619D73-6466-4D4B-9EFD-92ABF77FB03E_to_shape__43E5F67A-31F2-4BB1-975C-46F2ECBADF25" bpmnElement="_4FABC431-0913-49BF-8DE4-C411BE966D1D">
+        <di:waypoint x="274" y="186"/>
+        <di:waypoint x="269" y="179"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__3664F61B-4872-43BE-8DC9-D26B401219A8_to_shape__679921C6-CE4C-4566-B1F2-24147D96E6D8" bpmnElement="_518F0CFF-903C-4922-AA97-FE4D719C2087">
+        <di:waypoint x="517" y="158"/>
+        <di:waypoint x="593" y="158"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__679921C6-CE4C-4566-B1F2-24147D96E6D8_to_shape__E1B57BF5-A41D-45C2-98EA-446363369634" bpmnElement="_545E99B9-AAF8-4DE6-9830-43A80B34AA8D">
+        <di:waypoint x="649" y="158"/>
+        <di:waypoint x="578" y="216"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship id="_BCSeYC9OEDikS6zgKlNtCQ" type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="_9C619D73-6466-4D4B-9EFD-92ABF77FB03E">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_3664F61B-4872-43BE-8DC9-D26B401219A8">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_BBraYC9OEDikS6zgKlNtCQ</bpmn2:source>
+    <bpmn2:target>_BBraYC9OEDikS6zgKlNtCQ</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>
