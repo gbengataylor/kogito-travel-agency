@@ -4,6 +4,10 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
+If you want to learn more about Kogito, please visit its website: https://kogito.kie.org/ .
+
+To be able to view and edit the BPMN models in VSCode, follow the instructions here: https://github.com/cristianonicolai/devconfcz-2020#4-install-the-kogito-extension-in-vscode . In the future, the Kogito VSCode Extension will be available in the marketplace
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
